@@ -106,7 +106,7 @@ const App = () => {
         {size => (
           <Box fill>
             <AppBar>
-              <Heading level='3' margin='none'>Birth Board <span role="img" aria-label="Person with baby">🤱</span></Heading>
+              <Heading level='3' margin='none'>Birth Board <span role="img" aria-label="Pregnant person">🤰</span></Heading>
               {/* <Button
                 icon={<Menu />}
                 onClick={() => setShowSidebar(!showSidebar)}

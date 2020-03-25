@@ -29,13 +29,11 @@ jobs:
     #- run: yarn test
       env:
         CI: true
-    - name: SSH Deploy
-      uses: appleboy/ssh-action@master
+    - name: FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@3.0.0
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        passphrase: ${{ secrets.PASSPHRASE }}
-        script: |
-          whoami
-          ls -al
+        # Deployment destination server & path. Formatted as protocol://domain.com:port/full/destination/path/
+        ftp-server: ${{ secrets.FTP_SERVER }}	  
+        ftp-username: ${{ secrets.FTP_USERNAME }}
+        ftp-password: ${{ secrets.FTP_PASSWORD }}	 
+        local-dir: ./build

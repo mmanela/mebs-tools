@@ -19,6 +19,10 @@ border: 1px solid #000;
 border-radius:40px;
 color: white;`;
 
+
+const CardText = styled.h1`
+width:100%;`;
+
 export function FlipCard(props: FlipCardProps) {
     const cardStyle = {
         borderRadius: '3px',
@@ -28,20 +32,21 @@ export function FlipCard(props: FlipCardProps) {
         alignItems: "center",
         display: "flex",
         lineHeight: "normal",
+        "text-align": "center"
     };
 
     const [isFlipped, setIsFlipped] = useState(false);
-    
+
     return <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" containerStyle={{ width: "250px", height: "150px" }}>
         <YesStyleBox onClick={() => setIsFlipped(!isFlipped)} style={cardStyle}>
-            <h1>
+            <CardText>
                 {props.frontText}
-            </h1>
+            </CardText>
         </YesStyleBox>
         <NoStyleBox onClick={() => setIsFlipped(!isFlipped)} style={cardStyle}>
-            <h1>
+            <CardText>
                 {props.backText}
-            </h1>
+            </CardText>
         </NoStyleBox>
     </ReactCardFlip>;
 }

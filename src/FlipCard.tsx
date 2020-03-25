@@ -8,12 +8,13 @@ export type FlipCardProps = Partial<ReactFlipCardProps> & {
 }
 
 const YesStyleBox = styled.div`
-border: 1px solid ${props => props.theme.global.colors.brand};
+background-color: ${props => props.theme.global.colors.MebsDarkBlue};
+border: 1px solid #000;
 border-radius:40px;
-`;
+color: white;`;
 
 const NoStyleBox = styled.div`
-background-color: ${props => props.theme.global.colors.brand};
+background-color: ${props => props.theme.global.colors.MebsDarkGray};
 border: 1px solid #000;
 border-radius:40px;
 color: white;`;
@@ -23,14 +24,15 @@ export function FlipCard(props: FlipCardProps) {
         borderRadius: '3px',
         padding: '15px',
         width: '250px',
-        height: '250px',
+        height: '150px',
         alignItems: "center",
         display: "flex",
-        lineHeight: "normal"
+        lineHeight: "normal",
     };
 
     const [isFlipped, setIsFlipped] = useState(false);
-    return <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" containerStyle={{ width: "250px", height: "250px" }}>
+    
+    return <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" containerStyle={{ width: "250px", height: "150px" }}>
         <YesStyleBox onClick={() => setIsFlipped(!isFlipped)} style={cardStyle}>
             <h1>
                 {props.frontText}

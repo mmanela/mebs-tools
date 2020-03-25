@@ -36,7 +36,7 @@ const columns: IDictionary<string[]> = {
     small: ["auto", "auto"],
     medium: ["auto", "auto", "auto"],
     large: ["auto", "auto", "auto", "auto"],
-    xlarge: ["auto", "auto", "auto", "auto", "auto"]
+    xlarge: ["auto", "auto", "auto", "auto"]
 };
 
 // If the size is small, we have 3 rows
@@ -54,41 +54,40 @@ const listPlanOptionBoxes = birthPlanChoices.map(choice => (
     <FlipCard key={choice.YesOption} frontText={choice.YesOption} backText={choice.NoOption} />
 ));
 
-type ResponsiveGridProps = { children: any } & GridProps;
-const Responsive = (props: ResponsiveGridProps) => (
-    <ResponsiveContext.Consumer>
-        {size => {
-            // Take into consideration if not array is sent but a simple string
-            let columnsVal: (string[] | null) = null;
-            if (columns) {
-                if (columns[size]) {
-                    columnsVal = columns[size];
-                }
-            }
+type ResponsiveGridProps = { size: string, children: any } & GridProps;
+const Responsive = (props: ResponsiveGridProps) => {
+    const size = props.size;
+    // Take into consideration if not array is sent but a simple string
+    let columnsVal: (string[] | null) = null;
+    if (columns) {
+        if (columns[size]) {
+            columnsVal = columns[size];
+        }
+    }
 
-            let rowsVal: (string[] | null) = null;
-            if (rows) {
-                if (rows[size]) {
-                    rowsVal = rows[size];
-                }
-            }
+    let rowsVal: (string[] | null) = null;
+    if (rows) {
+        if (rows[size]) {
+            rowsVal = rows[size];
+        }
+    }
 
-            return (
-                <Grid
-                    rows={!rowsVal ? size : rowsVal}
-                    columns={!columnsVal ? size : columnsVal}
-                    {...props}>
-                    {props.children}
-                </Grid>
-            );
-        }}
-    </ResponsiveContext.Consumer>
-);
+    return (
+        <Grid
+            rows={!rowsVal ? size : rowsVal}
+            columns={!columnsVal ? size : columnsVal}
+            {...props}>
+            {props.children}
+        </Grid>
+    );
+}
 
-export const BirthPlanGrid = () => (
-    <Box>
-        <Responsive fill={true} gap="large" margin="medium" rows="250px" >
+export const BirthPlanGrid = () => {
+
+    const size = React.useContext(ResponsiveContext);
+    return <Box>
+        <Responsive size={size} fill={true} gap="large" margin="medium" rows="200px" >
             {listPlanOptionBoxes}
         </Responsive>
     </Box>
-);
+};

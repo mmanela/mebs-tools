@@ -74,6 +74,11 @@ const Responsive = (props: ResponsiveGridProps) => {
 
     return (
         <Grid
+            justifyContent="center"
+            alignContent="stretch"
+            align="center"
+            justify="center"
+            margin="0"
             rows={!rowsVal ? size : rowsVal}
             columns={!columnsVal ? size : columnsVal}
             {...props}>

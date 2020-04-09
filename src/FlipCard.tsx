@@ -11,12 +11,14 @@ const YesStyleBox = styled.div`
 background-color: ${props => props.theme.global.colors.MebsDarkBlue};
 border: 1px solid #000;
 border-radius:40px;
-color: white;`;
+text-align: center;
+color: black;`;
 
 const NoStyleBox = styled.div`
 background-color: ${props => props.theme.global.colors.MebsDarkGray};
 border: 1px solid #000;
 border-radius:40px;
+text-align: center;
 color: white;`;
 
 
@@ -31,8 +33,7 @@ export function FlipCard(props: FlipCardProps) {
         height: '150px',
         alignItems: "center",
         display: "flex",
-        lineHeight: "normal",
-        "text-align": "center"
+        lineHeight: "normal"
     };
 
     const [isFlipped, setIsFlipped] = useState(false);

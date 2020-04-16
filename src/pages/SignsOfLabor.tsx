@@ -101,7 +101,7 @@ height: 100%;
 `;
 const LaborSignDropTarget: React.FC = (): JSX.Element => {
     const dropTargetRef = React.useRef<HTMLDivElement>(null);
-    const [boxes, setBoxes] = useState<SignOfLabor[]>([]);
+    const [boxes, setBoxes] = useState<SignOfLabor[]>(signsOfLabor.filter(x => x.location == CardLocation.Categories));
     const moveBox = (item: SignOfLabor) => {
 
         let boxList = boxes.filter(x => x.id === item.id);

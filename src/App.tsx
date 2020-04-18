@@ -32,9 +32,14 @@ const StyledLink = styled(Link)`
     color: ${props => props.theme.global.colors['neutral-3']};
     border: none;
   }
+  &:hover {
+    color: ${props => props.theme.global.colors['neutral-4']};
+
+  }
 `;
 
 const App = () => {
+
   return (
     <Router>
       <Grommet theme={GlobalTheme} full>

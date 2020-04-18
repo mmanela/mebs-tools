@@ -3,27 +3,28 @@ import { Box, Grid, ResponsiveContext, GridProps } from "grommet";
 import { FlipCard } from "../FlipCard";
 
 interface BirthPlanChoice {
-    YesOption: string,
-    NoOption: string
+    yesOption: string,
+    NoOption: string,
+    isFlipped?: boolean
 };
 
 const birthPlanChoices: BirthPlanChoice[] = [
-    { YesOption: "Additional Labor Support: Doula, friend or family", NoOption: "Partner as only support person" },
-    { YesOption: "Stay at home as long as possible", NoOption: "Go to birthplace as soon as labor begins" },
-    { YesOption: "No food during labor", NoOption: "Eat in labor, if desired" },
-    { YesOption: "Go to bathroom to urinate as needed", NoOption: "Bladder catheter" },
-    { YesOption: "No pain medication", NoOption: "Epidural" },
-    { YesOption: "Breasteeding started in first hour", NoOption: "Feeding started after birthing person rests" },
-    { YesOption: "Labor medically induced", NoOption: "Labor begins on its own" },
-    { YesOption: "Routine IV or hydration", NoOption: "Drink fluids when needed" },
-    { YesOption: "Spontaneous pushing with urge to push", NoOption: "Directed pushing" },
-    { YesOption: "Vaginal Birth", NoOption: "Cesarean Birth" },
-    { YesOption: "Baby cleaned up before skin to skin", NoOption: "Skin to skin immediately after birth" },
-    { YesOption: "Push in positions that feel best", NoOption: "Push in semi-sititng or side-lying only" },
-    { YesOption: "Continuous monitoring with EFM", NoOption: "Occasional monitoring (with Doppler or EFM)" },
-    { YesOption: "Upright, moving, walking, dancing", NoOption: "Stay in bed through labor" },
-    { YesOption: "Breaking bag of water or Pitocin to speed labor", NoOption: "No medical methods to speed labor" },
-    { YesOption: "Bath, Shower, Soothing environment to encourage endorphins", NoOption: "IV Narcotics" }
+    { yesOption: "Additional Labor Support: Doula, friend or family", NoOption: "Partner as only support person" },
+    { yesOption: "Stay at home as long as possible", NoOption: "Go to birthplace as soon as labor begins" },
+    { yesOption: "No food during labor", NoOption: "Eat in labor, if desired" },
+    { yesOption: "Go to bathroom to urinate as needed", NoOption: "Bladder catheter" },
+    { yesOption: "No pain medication", NoOption: "Epidural" },
+    { yesOption: "Breasteeding started in first hour", NoOption: "Feeding started after birthing person rests" },
+    { yesOption: "Labor medically induced", NoOption: "Labor begins on its own" },
+    { yesOption: "Routine IV or hydration", NoOption: "Drink fluids when needed" },
+    { yesOption: "Spontaneous pushing with urge to push", NoOption: "Directed pushing" },
+    { yesOption: "Vaginal Birth", NoOption: "Cesarean Birth" },
+    { yesOption: "Baby cleaned up before skin to skin", NoOption: "Skin to skin immediately after birth" },
+    { yesOption: "Push in positions that feel best", NoOption: "Push in semi-sititng or side-lying only" },
+    { yesOption: "Continuous monitoring with EFM", NoOption: "Occasional monitoring (with Doppler or EFM)" },
+    { yesOption: "Upright, moving, walking, dancing", NoOption: "Stay in bed through labor" },
+    { yesOption: "Breaking bag of water or Pitocin to speed labor", NoOption: "No medical methods to speed labor" },
+    { yesOption: "Bath, Shower, Soothing environment to encourage endorphins", NoOption: "IV Narcotics" }
 ];
 interface IDictionary<TValue> {
     [id: string]: TValue;
@@ -48,11 +49,6 @@ const rows: IDictionary<string[]> = {
     large: ["xsmall"],
     xlarge: ["xsmall"]
 };
-
-// Create box for each  choice
-const listPlanOptionBoxes = birthPlanChoices.map(choice => (
-    <FlipCard key={choice.YesOption} frontText={choice.YesOption} backText={choice.NoOption} />
-));
 
 type ResponsiveGridProps = { size: string, children: any } & GridProps;
 const Responsive = (props: ResponsiveGridProps) => {
@@ -90,6 +86,14 @@ const Responsive = (props: ResponsiveGridProps) => {
 export const BirthPlanGrid = () => {
 
     const size = React.useContext(ResponsiveContext);
+    // Create box for each  choice
+    const listPlanOptionBoxes = birthPlanChoices.map(choice => {
+        const onFlip = (flipped: boolean) => {
+            choice.isFlipped = flipped;
+        }
+        return <FlipCard key={choice.yesOption} isFlipped={choice.isFlipped} frontText={choice.yesOption} backText={choice.NoOption} onFlip={onFlip} />
+    });
+
     return <Box>
         <Responsive size={size} fill={true} gap="large" margin="medium" rows="200px" >
             {listPlanOptionBoxes}

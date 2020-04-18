@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 export type FlipCardProps = Partial<ReactFlipCardProps> & {
     frontText: string,
-    backText: string
+    backText: string,
+    onFlip?: (flipped: boolean) => void
 }
 
 const YesStyleBox = styled.div`
@@ -36,15 +37,22 @@ export function FlipCard(props: FlipCardProps) {
         lineHeight: "normal"
     };
 
-    const [isFlipped, setIsFlipped] = useState(false);
+    const [isFlipped, setIsFlipped] = useState(props.isFlipped);
+
+    const flip = (flipped: boolean) => {
+        setIsFlipped(flipped);
+        if (props.onFlip) {
+            props.onFlip(flipped);
+        }
+    }
 
     return <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" containerStyle={{ width: "250px", height: "150px" }}>
-        <YesStyleBox onClick={() => setIsFlipped(!isFlipped)} style={cardStyle}>
+        <YesStyleBox onClick={() => flip(!isFlipped)} style={cardStyle}>
             <CardText>
                 {props.frontText}
             </CardText>
         </YesStyleBox>
-        <NoStyleBox onClick={() => setIsFlipped(!isFlipped)} style={cardStyle}>
+        <NoStyleBox onClick={() => flip(!isFlipped)} style={cardStyle}>
             <CardText>
                 {props.backText}
             </CardText>

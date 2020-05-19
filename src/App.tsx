@@ -15,6 +15,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { PostpartumConcernGrid } from './pages/PostpartumConcerns';
 
 const StyledMainBox = styled(Box)`
   margin-bottom: 10px;
@@ -27,6 +28,7 @@ const StyledMainBox = styled(Box)`
 const StyledLink = styled(Link)`
   font-weight: bold;
   text-decoration: none;
+  margin-right: 5px;
   color: ${props => props.theme.global.colors['neutral-3']};
   &:active, &:visited {
     color: ${props => props.theme.global.colors['neutral-3']};
@@ -48,6 +50,7 @@ const App = () => {
             <Heading size="small" level="5" margin="0">Mallory Emerson Birth Tools</Heading>
             <StyledLink to="/birthplan">Birth Plan</StyledLink>
             <StyledLink to="/laborsigns">Signs of Labor</StyledLink>
+            <StyledLink to="/postpartumconcerns">Postpartum Concerns</StyledLink>
           </Nav>
           <StyledMainBox direction='row' flex overflow={{ horizontal: 'hidden' }}>
             <Box flex align='center' justify='center'>
@@ -58,6 +61,9 @@ const App = () => {
                 </Route>
                 <Route path="/birthplan">
                   <BirthPlanGrid />
+                </Route>
+                <Route path="/postpartumconcerns">
+                  <PostpartumConcernGrid />
                 </Route>
                 <Route path="/">
                   <BirthPlanGrid />

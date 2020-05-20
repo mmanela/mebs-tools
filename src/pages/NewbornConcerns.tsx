@@ -3,12 +3,12 @@ import { Box, Grid, ResponsiveContext, GridProps } from "grommet";
 import styled from "styled-components";
 
 
-interface PostpartumConcern {
+interface NewbornConcern {
     text: string,
     isConcern?: boolean
 };
 
-const postpartumConcerns: PostpartumConcern[] = [
+const NewbornConcerns: NewbornConcern[] = [
     { text: "Cone-Shaped Head" },
     { text: "Soft Spots on Head" },
     { text: "Spitting up that baby doesn't mind" },
@@ -22,7 +22,7 @@ const postpartumConcerns: PostpartumConcern[] = [
     { text: "Listless, weak or changes in behavior" },
     { text: "Bluish-green or gray mark" },
     { text: "Stool that contains blood or mucus" },
-    { text: "Serios difficulty breathing" },
+    { text: "Serious difficulty breathing" },
     { text: "White substance on skin after birth" },
     { text: "Tiny white bumps on face" },
     { text: "Throws out arms and legs at loud noise" },
@@ -103,15 +103,15 @@ const Responsive = (props: ResponsiveGridProps) => {
     );
 }
 
-export const PostpartumConcernGrid = () => {
+export const NewbornConcernGrid = () => {
 
     const size = React.useContext(ResponsiveContext);
     // Create box for each  choice
-    const listPlanOptionBoxes = postpartumConcerns.map(concern => {
+    const listPlanOptionBoxes = NewbornConcerns.map(concern => {
         const onChange = (isConcern: boolean) => {
             concern.isConcern = isConcern;
         }
-        return <PostpartumConcernCard key={concern.text} text={concern.text} isConcern={concern.isConcern} onChange={onChange} />
+        return <NewbornConcernCard key={concern.text} text={concern.text} isConcern={concern.isConcern} onChange={onChange} />
     });
 
     return <Box>
@@ -121,7 +121,7 @@ export const PostpartumConcernGrid = () => {
     </Box>
 };
 
-export type PostpartumCardProps = {
+export type NewbornCardProps = {
     text: string,
     isConcern?: boolean,
     onChange?: (state: boolean) => void
@@ -130,14 +130,14 @@ export type PostpartumCardProps = {
 interface BoxProps {
     backgroundColor: string;
 }
-const PostpartumConcernBox = styled.div<BoxProps>`
+const NewbornConcernBox = styled.div<BoxProps>`
 background-color: ${props => props.backgroundColor || "white"};
 border: 0.5px solid #000;
 border-radius:0;
 text-align: center;
 padding: 15px;
 width: 200px;
-height: 100px;
+height: 70px;
 align-items: center;
 display: flex;
 line-height: normal;
@@ -155,7 +155,7 @@ const isConcernColor = "#F9928F";
 const notConcernColor = "#C5E0B3";
 
 
-const PostpartumConcernCard = (props: PostpartumCardProps) => {
+const NewbornConcernCard = (props: NewbornCardProps) => {
 
     const [isConcern, setIsConcern] = useState(props.isConcern);
 
@@ -186,7 +186,7 @@ const PostpartumConcernCard = (props: PostpartumCardProps) => {
         backgroundColor = notConcernColor;
     }
 
-    return <PostpartumConcernBox key={props.text} backgroundColor={backgroundColor} onClick={onClick} >
+    return <NewbornConcernBox key={props.text} backgroundColor={backgroundColor} onClick={onClick} >
         <span>{props.text}</span>
-    </PostpartumConcernBox>;
+    </NewbornConcernBox>;
 }

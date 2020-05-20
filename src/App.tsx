@@ -15,13 +15,14 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { PostpartumConcernGrid } from './pages/PostpartumConcerns';
+import { NewbornConcernGrid } from './pages/NewbornConcerns';
 
 const StyledMainBox = styled(Box)`
   margin-bottom: 10px;
   margin-top: 0;
   margin-left:0;
   margin-right:0;
+  padding-top: 10px;
 `;
 
 
@@ -46,12 +47,12 @@ const App = () => {
     <Router>
       <Grommet theme={GlobalTheme} full>
         <Box fill>
-          <Nav direction="row" background="MebsLightGray" pad="small" gap="small">
+          {/* <Nav direction="row" background="MebsLightGray" pad="small" gap="small">
             <Heading size="small" level="5" margin="0">Mallory Emerson Birth Tools</Heading>
             <StyledLink to="/birthplan">Birth Plan</StyledLink>
             <StyledLink to="/laborsigns">Signs of Labor</StyledLink>
-            <StyledLink to="/postpartumconcerns">Postpartum Concerns</StyledLink>
-          </Nav>
+            <StyledLink to="/newbornconcerns">Newborn Concerns</StyledLink>
+          </Nav> */}
           <StyledMainBox direction='row' flex overflow={{ horizontal: 'hidden' }}>
             <Box flex align='center' justify='center'>
 
@@ -62,8 +63,8 @@ const App = () => {
                 <Route path="/birthplan">
                   <BirthPlanGrid />
                 </Route>
-                <Route path="/postpartumconcerns">
-                  <PostpartumConcernGrid />
+                <Route path="/newbornconcerns">
+                  <NewbornConcernGrid />
                 </Route>
                 <Route path="/">
                   <BirthPlanGrid />

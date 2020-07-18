@@ -9,6 +9,20 @@ import styled from "styled-components";
 const StyledBox = styled(Box)`
 `;
 
+const StyledLink = styled(Link)`
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 17px;
+  color: ${props => props.theme.global.colors['neutral-3']};
+  &:active, &:visited {
+    color: ${props => props.theme.global.colors['neutral-3']};
+    border: none;
+  }
+  &:hover {
+    color: ${props => props.theme.global.colors['neutral-4']};
+  }
+`;
+
 
 export const CardSortRouter = () => {
 
@@ -22,9 +36,9 @@ export const CardSortRouter = () => {
         <CardSort configuration={x} />
     </Route>);
 
-    const links = configs.map(x => <Link key={x.name} to={`${url}/${x.name}`}>
+    const links = configs.map(x => <li style={{ marginBottom: '8px' }} key={x.name}><StyledLink key={x.name} to={`${url}/${x.name}`}>
         {x.title}
-    </Link>);
+    </StyledLink></li>);
 
     return (
         <StyledBox fill={true} flex align='center'  >
@@ -32,7 +46,9 @@ export const CardSortRouter = () => {
                 {routes}
                 <Route path="/">
                     <h2>Card Sorts</h2>
-                    {links}
+                    <ul>
+                        {links}
+                    </ul>
                 </Route>
             </Switch></StyledBox>);
 }

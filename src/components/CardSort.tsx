@@ -172,8 +172,9 @@ export interface CardSortCategoryConfig {
     description: string;
 }
 export interface CardSortConfig {
+    name: string;
     title: string;
-    cardBackgroundColor: string;
+    cardBackgroundColor?: string;
     cards: CardSortCardConfig[];
     categories: CardSortCategoryConfig[];
 }

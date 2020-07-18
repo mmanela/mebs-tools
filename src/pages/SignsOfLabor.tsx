@@ -23,6 +23,7 @@ const signsOfLaborTitles = [
 
 export const SignsOfLabor: React.FC = () => {
     const config: CardSortConfig = {
+        name: "laborsigns",
         title: "Signs of Labor",
         cardBackgroundColor: '#78d0bb',
         cards: signsOfLaborTitles.map(x => { return { title: x } }),

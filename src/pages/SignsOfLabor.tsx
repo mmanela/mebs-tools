@@ -1,5 +1,6 @@
 import React from "react";
-import { CardSort, CardSortConfig, CardSortCategoryConfig } from "../components/CardSort";
+import { CardSort } from "../components/CardSort";
+import { CardSortStore, CardSortConfig, CardSortCategoryConfig } from "../stores/cardSortStore";
 
 
 const laborCategories: CardSortCategoryConfig[] = [
@@ -29,6 +30,6 @@ export const SignsOfLabor: React.FC = () => {
         cards: signsOfLaborTitles.map(x => { return { title: x } }),
         categories: laborCategories
     }
-    return <CardSort configuration={config} />;
+    return <CardSort configuration={config} store={CardSortStore.Instance} />;
 };
 

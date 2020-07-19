@@ -1,9 +1,10 @@
 import React from "react";
 import configuration from "../configurations/cardSortConfig.json";
-import { CardSortConfig, CardSort } from "../components/CardSort";
+import { CardSort } from "../components/CardSort";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import { Box } from "grommet";
 import styled from "styled-components";
+import { CardSortStore, CardSortConfig } from "../stores/cardSortStore";
 
 
 const StyledBox = styled(Box)`
@@ -23,7 +24,6 @@ const StyledLink = styled(Link)`
   }
 `;
 
-
 export const CardSortRouter = () => {
 
     let { path, url } = useRouteMatch();
@@ -33,7 +33,7 @@ export const CardSortRouter = () => {
         return <div>No valid card sort configs found</div>
     }
     const routes = configs.map(x => <Route key={x.name} path={`${path}/${x.name}`}>
-        <CardSort configuration={x} />
+        <CardSort configuration={x} store={CardSortStore.Instance} />
     </Route>);
 
     const links = configs.map(x => <li style={{ marginBottom: '8px' }} key={x.name}><StyledLink key={x.name} to={`${url}/${x.name}`}>

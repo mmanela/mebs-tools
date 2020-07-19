@@ -3,24 +3,8 @@ import { Box, ResponsiveContext } from "grommet";
 import styled from "styled-components";
 import { useDrag, useDrop, DndProvider } from 'react-dnd';
 import Backend from 'react-dnd-html5-backend';
+import { CardSortStore, CardData, CardLocation, CardCategoryData, CardSortConfig } from "../stores/cardSortStore";
 
-
-export interface CardData {
-    type: string
-    id: string
-    top?: number
-    left?: number,
-    location: CardLocation
-}
-
-
-interface CardCategoryData {
-    title: string,
-    description: string
-};
-
-
-enum CardLocation { List, Categories };
 
 const StyledCard = styled(Box)`
 background-color: lightblue;
@@ -163,35 +147,19 @@ const StyledBox = styled(Box)`
   padding-right:15px;
 `;
 
-
-export interface CardSortCardConfig {
-    title: string;
-}
-export interface CardSortCategoryConfig {
-    title: string;
-    description: string;
-}
-export interface CardSortConfig {
-    name: string;
-    title: string;
-    cardBackgroundColor?: string;
-    cards: CardSortCardConfig[];
-    categories: CardSortCategoryConfig[];
-}
 export type CardSortProps = {
     configuration: CardSortConfig
+    store: CardSortStore
 }
 
 export const CardSort: React.FC<CardSortProps> = (props: CardSortProps) => {
 
-    const cards: CardData[] = props.configuration.cards.map((s) => { return { id: s.title, type: "card", location: CardLocation.List } });
-    const categories: CardCategoryData[] = props.configuration.categories;
-
+    const state = props.store.getState(props.configuration);
     return <DndProvider backend={Backend}>
         <StyledBox direction="column" align="center" fill>
             <h1>{props.configuration.title}</h1>
-            <CardSection cards={cards} categories={categories} config={props.configuration} />
-            <CategoriesDropTarget cards={cards} categories={categories} config={props.configuration} />
+            <CardSection cards={state.cards} categories={state.categories} config={props.configuration} />
+            <CategoriesDropTarget cards={state.cards} categories={state.categories} config={props.configuration} />
         </StyledBox>
     </DndProvider>;
 };

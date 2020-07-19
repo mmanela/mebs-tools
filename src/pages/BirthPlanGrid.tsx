@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, ResponsiveContext, GridProps } from "grommet";
-import { FlipCard } from "../FlipCard";
+import { FlipCard } from "../components/FlipCard";
 
 interface BirthPlanChoice {
     yesOption: string,

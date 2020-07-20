@@ -1,6 +1,6 @@
-export interface CardSortConfig {
-    name: string;
-    title: string;
+import { BaseConfig, BaseStore } from "./BaseStore";
+
+export interface CardSortConfig extends BaseConfig {
     cardBackgroundColor?: string;
     cards: CardSortCardConfig[];
     categories: CardSortCategoryConfig[];
@@ -36,8 +36,7 @@ export interface CardSortState {
     categories: CardCategoryData[];
 }
 
-export class CardSortStore {
-
+export class CardSortStore implements BaseStore<CardSortConfig, CardSortState> {
     private static instance: CardSortStore = new CardSortStore();
     public static get Instance() {
         return CardSortStore.instance;

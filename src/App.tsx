@@ -13,7 +13,7 @@ import {
   Route
 } from "react-router-dom";
 import { NewbornConcernGrid } from './pages/NewbornConcerns';
-import { CardSortRouter } from './pages/CardSortRouter';
+import { CardSortRouter } from './pages/Router';
 
 const StyledMainBox = styled(Box)`
   margin-bottom: 10px;
@@ -64,7 +64,7 @@ const App = () => {
                 <Route path="/newbornconcerns">
                   <NewbornConcernGrid />
                 </Route>
-                <Route path="/cardsort">
+                <Route path="/router">
                   <CardSortRouter />
                 </Route>
                 <Route path="/">

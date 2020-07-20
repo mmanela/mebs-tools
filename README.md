@@ -18,7 +18,8 @@ The below example configures two flip boards. You can add as many as you want. T
     {
         "name": "flipboard1",
         "title": "My Flip Board One",
-        "cardBackgroundColor": "lightgrey",
+        "cardBackgroundColorFront": "#737373",
+        "cardBackgroundColorBack": "#78d0bb",
         "cards": [
             {
                 "frontText": "Card 1 Front",
@@ -37,7 +38,8 @@ The below example configures two flip boards. You can add as many as you want. T
      {
       "name": "flipboard2",
       "title": "My Flip Board Two",
-      "cardBackgroundColor": "yellow",
+      "cardBackgroundColorFront": "lightgrey",
+      "cardBackgroundColorBack": "lightblue",
       "cards": [
           {
               "frontText": "Card 1 Front",
@@ -73,6 +75,7 @@ The below example configures two card sorts. You can add as many as you want. Th
  {
         "name": "decisions",
         "title": "Decision Sorter",
+        "cardBackgroundColor": "#78d0bb",
         "categories": [
             {
                 "title": "Growing Foods",

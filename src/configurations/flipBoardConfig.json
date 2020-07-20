@@ -2,7 +2,8 @@
     {
         "name": "birthplan",
         "title": "Birth Plan",
-        "cardBackgroundColor": "#78d0bb",
+        "cardBackgroundColorFront": "#78d0bb",
+        "cardBackgroundColorBack": "#737373",
         "cards": [
             {
                 "frontText": "Additional Labor Support: Doula, friend or family",

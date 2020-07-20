@@ -1,7 +1,8 @@
 import { BaseConfig, BaseStore } from "./BaseStore";
 
 export interface FlipBoardConfig extends BaseConfig {
-    cardBackgroundColor?: string;
+    cardBackgroundColorFront?: string;
+    cardBackgroundColorBack?: string;
     cards: FlipBoardCardConfig[];
 }
 

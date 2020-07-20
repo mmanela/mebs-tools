@@ -77,7 +77,13 @@ export const FlipBoard: React.FC<FlipBoardProps> = (props: FlipBoardProps) => {
         const onFlip = (flipped: boolean) => {
             choice.isFlipped = flipped;
         }
-        return <FlipCard key={choice.frontText} isFlipped={choice.isFlipped} frontText={choice.frontText} backText={choice.backText} onFlip={onFlip} />
+        return <FlipCard key={choice.frontText}
+            isFlipped={choice.isFlipped}
+            frontText={choice.frontText}
+            backText={choice.backText}
+            frontBackgroundColor={props.configuration.cardBackgroundColorFront}
+            backBackgroundColor={props.configuration.cardBackgroundColorBack}
+            onFlip={onFlip} />
     });
 
     return <Box>

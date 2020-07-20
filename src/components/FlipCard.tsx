@@ -5,6 +5,8 @@ import styled from 'styled-components';
 export type FlipCardProps = Partial<ReactFlipCardProps> & {
     frontText: string,
     backText: string,
+    frontBackgroundColor?: string,
+    backBackgroundColor?: string,
     onFlip?: (flipped: boolean) => void
 }
 
@@ -46,13 +48,23 @@ export function FlipCard(props: FlipCardProps) {
         }
     }
 
+    let frontCss: React.CSSProperties = { ...cardStyle };
+    if (props.frontBackgroundColor) {
+        frontCss.backgroundColor = props.frontBackgroundColor;
+    }
+
+    let backCss: React.CSSProperties = { ...cardStyle };
+    if (props.backBackgroundColor) {
+        backCss.backgroundColor = props.backBackgroundColor;
+    }
+
     return <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" containerStyle={{ width: "250px", height: "150px" }}>
-        <YesStyleBox onClick={() => flip(!isFlipped)} style={cardStyle}>
+        <YesStyleBox style={frontCss} onClick={() => flip(!isFlipped)}>
             <CardText>
                 {props.frontText}
             </CardText>
         </YesStyleBox>
-        <NoStyleBox onClick={() => flip(!isFlipped)} style={cardStyle}>
+        <NoStyleBox style={backCss} onClick={() => flip(!isFlipped)}>
             <CardText>
                 {props.backText}
             </CardText>

@@ -7,7 +7,7 @@ export interface CardSortConfig extends BaseConfig {
 }
 
 export interface CardSortCardConfig {
-    title: string;
+    text: string;
 }
 export interface CardSortCategoryConfig {
     title: string;
@@ -50,7 +50,7 @@ export class CardSortStore implements BaseStore<CardSortConfig, CardSortState> {
         }
         else {
 
-            const cards: CardData[] = config.cards.map((s) => { return { id: s.title, type: "card", location: CardLocation.List } });
+            const cards: CardData[] = config.cards.map((s) => { return { id: s.text, type: "card", location: CardLocation.List } });
             const categories: CardCategoryData[] = config.categories;
             const state: CardSortState = { cards, categories };
             this.stateMap.set(config.name, state);

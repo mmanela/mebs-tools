@@ -19,34 +19,34 @@
         ],
         "cards": [
             {
-                "title": "Bloody Show"
+                "text": "Bloody Show"
             },
             {
-                "title": "Non-progressing Contractions"
+                "text": "Non-progressing Contractions"
             },
             {
-                "title": "Restless Backache"
+                "text": "Restless Backache"
             },
             {
-                "title": "Nesting Urge"
+                "text": "Nesting Urge"
             },
             {
-                "title": "Soft Bowel Movements"
+                "text": "Soft Bowel Movements"
             },
             {
-                "title": "Progressing Contractions (Longer, Stronger, Closer Together)"
+                "text": "Progressing Contractions (Longer, Stronger, Closer Together)"
             },
             {
-                "title": "Rupture of Membranes (Gush of Fluid)"
+                "text": "Rupture of Membranes (Gush of Fluid)"
             },
             {
-                "title": "Leaking Fluid"
+                "text": "Leaking Fluid"
             },
             {
-                "title": "Cramping"
+                "text": "Cramping"
             },
             {
-                "title": "Nausea"
+                "text": "Nausea"
             }
         ]
     },
@@ -73,28 +73,28 @@
         ],
         "cards": [
             {
-                "title": "Michael Jordan"
+                "text": "Michael Jordan"
             },
             {
-                "title": "Derek Jeter"
+                "text": "Derek Jeter"
             },
             {
-                "title": "Roger Federer"
+                "text": "Roger Federer"
             },
             {
-                "title": "Tom Brady"
+                "text": "Tom Brady"
             },
             {
-                "title": "Aaron Rogers"
+                "text": "Aaron Rogers"
             },
             {
-                "title": "Lebron James"
+                "text": "Lebron James"
             },
             {
-                "title": "Raphael Nadal"
+                "text": "Raphael Nadal"
             },
             {
-                "title": "Babe Ruth"
+                "text": "Babe Ruth"
             }
         ]
     }

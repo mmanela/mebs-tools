@@ -1,46 +1,186 @@
 # Mallory Emerson Birth Services Tools
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This site provides a set of configurable tools to help run child birth education classes (but can be used for other). Each tool is driven via a configuration file. There are three tools today
 
-## Available Scripts
 
-In the project directory, you can run:
+## Flip Board
 
-### `yarn start`
+The flip board tool allows you to have a grid of two-sides cards to flip through.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Configuration 
+To configure flip boards please edit the contents of `configuration/flipBoardConfig.json`.
 
-### `yarn test`
+The below example configures two flip boards. You can add as many as you want. The name configuration of each determines its url.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+[
+    {
+        "name": "flipboard1",
+        "title": "My Flip Board One",
+        "cardBackgroundColor": "lightgrey",
+        "cards": [
+            {
+                "frontText": "Card 1 Front",
+                "backText": "Card 1 Back"
+            },
+            {
+                "frontText": "Card 2 Front",
+                "backText": "Card 2 Back"
+            },
+            {
+                "frontText": "Card 2 Front",
+                "backText": "Card 2 Back"
+            }
+        ]
+    },
+     {
+      "name": "flipboard2",
+      "title": "My Flip Board Two",
+      "cardBackgroundColor": "yellow",
+      "cards": [
+          {
+              "frontText": "Card 1 Front",
+              "backText": "Card 1 Back"
+          },
+          {
+              "frontText": "Card 2 Front",
+              "backText": "Card 2 Back"
+          },
+          {
+              "frontText": "Card 2 Front",
+              "backText": "Card 2 Back"
+          }
+      ]
+  }
+]
+```
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Card Sort
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The card sort tool allows you to have have a set of cards on top and categories below to drag the cards between.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Configuration 
+To configure card sorts please edit the contents of `configuration/cardSortConfig.json`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The below example configures two card sorts. You can add as many as you want. The name configuration of each determines its url.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+[
+ {
+        "name": "decisions",
+        "title": "Decision Sorter",
+        "categories": [
+            {
+                "title": "Growing Foods",
+                "description": "Foods that help you grow"
+            },
+            {
+                "title": "Fun Foods",
+                "description": "Foods that are fun but don't help your body"
+            }
+        ],
+        "cards": [
+            {
+                "text": "Candy"
+            },
+            {
+                "text": "Vegatables"
+            },
+            {
+                "text": "Aaron Rogers"
+            },
+            {
+                "text": "Pizza"
+            }
+        ]
+    },
+    {
+        "name": "sports",
+        "title": "Sports Player Sorter",
+        "categories": [
+            {
+                "title": "Tennis",
+                "description": "Raquet sport"
+            },
+            {
+                "title": "Baseball",
+                "description": "Bat Sport"
+            },
+            {
+                "title": "Basketball",
+                "description": "Hoop Sport"
+            }
+        ],
+        "cards": [
+            {
+                "text": "Derek Jeter"
+            },
+            {
+                "text": "Roger Federer"
+            },
+            {
+                "text": "LeBron James"
+            }
+        ]
+    }
+]
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Tri-Color Board
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The tri color board tool allows you to have have a set of cards on on a board that you start off  with an initial color that you then can toggle between two additional colors.
+
+
+### Configuration 
+To configure tri-color boards please edit the contents of `configuration/triColorBoardConfig.json`.
+
+The below example configures two card sorts. You can add as many as you want. The name configuration of each determines its url.
+
+```
+[
+    {
+        "name": "tricolorBoard1",
+        "title": "First TriColor Board",
+        "cardColorOne": "#ffffff",
+        "cardColorTwo": "#F9928F",
+        "cardColorThree": "#C5E0B3",
+        "cards": [
+            {
+                "text": "One"
+            },
+            {
+                "text": "Two"
+            },
+            {
+                "text": "Three"
+            }
+        ]
+    },
+    {
+        "name": "tricolorBoard2",
+        "title": "Second TriColor Board",
+        "cardColorOne": "#ffffff",
+        "cardColorTwo": "grey",
+        "cardColorThree": "green",
+        "cards": [
+            {
+                "text": "Uno"
+            },
+            {
+                "text": "Dos"
+            },
+            {
+                "text": "Tres"
+            }
+        ]
+    }
+]
+```
+
+

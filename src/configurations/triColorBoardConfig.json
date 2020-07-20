@@ -1,0 +1,119 @@
+[
+    {
+        "name": "newbornconcerns",
+        "title": "Newborn Concerns",
+        "cardColorOne": "#ffffff",
+        "cardColorTwo": "#F9928F",
+        "cardColorThree": "#C5E0B3",
+        "cards": [
+            {
+                "text": "Cone-Shaped Head"
+            },
+            {
+                "text": "Soft Spots on Head"
+            },
+            {
+                "text": "Spitting up that baby doesn't mind"
+            },
+            {
+                "text": "Not feeding well because very sleepy"
+            },
+            {
+                "text": "Peeling skin"
+            },
+            {
+                "text": "Umbilical cord has pus, foul smell"
+            },
+            {
+                "text": "Black sticky bowel movement"
+            },
+            {
+                "text": "Vaginal discharge"
+            },
+            {
+                "text": "Umbilical cord dries up and falls off"
+            },
+            {
+                "text": "Circumcised penis has some discharge"
+            },
+            {
+                "text": "Listless, weak or changes in behavior"
+            },
+            {
+                "text": "Bluish-green or gray mark"
+            },
+            {
+                "text": "Stool that contains blood or mucus"
+            },
+            {
+                "text": "Serious difficulty breathing"
+            },
+            {
+                "text": "White substance on skin after birth"
+            },
+            {
+                "text": "Tiny white bumps on face"
+            },
+            {
+                "text": "Throws out arms and legs at loud noise"
+            },
+            {
+                "text": "Forceful vomiting"
+            },
+            {
+                "text": "Rash or red spotches on skin"
+            },
+            {
+                "text": "Loose, yellow seedy poop after day 5"
+            },
+            {
+                "text": "Snorts, pants, groans in sleep"
+            },
+            {
+                "text": "Flaking skin on scalp"
+            },
+            {
+                "text": "Patches of deep pink skin"
+            },
+            {
+                "text": "Blue color of lips, tongue, mouth"
+            },
+            {
+                "text": "Purple or blue hands and feet"
+            },
+            {
+                "text": "No bowel movement in 24 hour period"
+            },
+            {
+                "text": "Swelling in genital area"
+            },
+            {
+                "text": "Fewer than 6 wet diapers per day by day 5"
+            },
+            {
+                "text": "Skin or whites of eyes look yellow"
+            },
+            {
+                "text": "You feel something is \"off\""
+            },
+            {
+                "text": "Hiccups frequently after feedings"
+            },
+            {
+                "text": "Fever or seems ill"
+            },
+            {
+                "text": "Soft downy hair covering body"
+            },
+            {
+                "text": "Difficulty latching on the breast"
+            },
+            {
+                "text": "Underarm temperature of 99° or higher"
+            },
+            {
+                "text": "Some periods of irregular breathing"
+            }
+        ]
+    }
+]

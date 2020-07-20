@@ -1,51 +1,8 @@
 import React, { useState } from "react";
 import { Box, Grid, ResponsiveContext, GridProps } from "grommet";
 import styled from "styled-components";
+import { TriColorBoardConfig, TriColorBoardStore } from "../stores/triColorBoardStore";
 
-
-interface NewbornConcern {
-    text: string,
-    isConcern?: boolean
-};
-
-const NewbornConcerns: NewbornConcern[] = [
-    { text: "Cone-Shaped Head" },
-    { text: "Soft Spots on Head" },
-    { text: "Spitting up that baby doesn't mind" },
-    { text: "Not feeding well because very sleepy" },
-    { text: "Peeling skin" },
-    { text: "Umbilical cord has pus, foul smell" },
-    { text: "Black sticky bowel movement" },
-    { text: "Vaginal discharge" },
-    { text: "Umbilical cord dries up and falls off" },
-    { text: "Circumcised penis has some discharge" },
-    { text: "Listless, weak or changes in behavior" },
-    { text: "Bluish-green or gray mark" },
-    { text: "Stool that contains blood or mucus" },
-    { text: "Serious difficulty breathing" },
-    { text: "White substance on skin after birth" },
-    { text: "Tiny white bumps on face" },
-    { text: "Throws out arms and legs at loud noise" },
-    { text: "Forceful vomiting" },
-    { text: "Rash or red spotches on skin" },
-    { text: "Loose, yellow seedy poop after day 5" },
-    { text: "Snorts, pants, groans in sleep" },
-    { text: "Flaking skin on scalp" },
-    { text: "Patches of deep pink skin" },
-    { text: "Blue color of lips, tongue, mouth" },
-    { text: "Purple or blue hands and feet" },
-    { text: "No bowel movement in 24 hour period" },
-    { text: "Swelling in genital area" },
-    { text: "Fewer than 6 wet diapers per day by day 5" },
-    { text: "Skin or whites of eyes look yellow" },
-    { text: "You feel something is \"off\"" },
-    { text: "Hiccups frequently after feedings" },
-    { text: "Fever or seems ill" },
-    { text: "Soft downy hair covering body" },
-    { text: "Difficulty latching on the breast" },
-    { text: "Underarm temperature of 99° or higher" },
-    { text: "Some periods of irregular breathing" }
-];
 interface IDictionary<TValue> {
     [id: string]: TValue;
 }
@@ -103,15 +60,21 @@ const Responsive = (props: ResponsiveGridProps) => {
     );
 }
 
-export const NewbornConcernGrid = () => {
+export type TriColorBoardProps = {
+    configuration: TriColorBoardConfig
+    store: TriColorBoardStore
+}
 
+export const TriColorBoard: React.FC<TriColorBoardProps> = (props: TriColorBoardProps) => {
+
+    const state = props.store.getState(props.configuration);
     const size = React.useContext(ResponsiveContext);
     // Create box for each  choice
-    const listPlanOptionBoxes = NewbornConcerns.map(concern => {
+    const listPlanOptionBoxes = state.cards.map(card => {
         const onChange = (isConcern: boolean) => {
-            concern.isConcern = isConcern;
+            card.state = isConcern;
         }
-        return <NewbornConcernCard key={concern.text} text={concern.text} isConcern={concern.isConcern} onChange={onChange} />
+        return <TriColorCard key={card.text} text={card.text} isConcern={card.state} config={props.configuration} onChange={onChange} />
     });
 
     return <Box>
@@ -121,16 +84,17 @@ export const NewbornConcernGrid = () => {
     </Box>
 };
 
-export type NewbornCardProps = {
+export type TriColorCardProps = {
     text: string,
     isConcern?: boolean,
+    config: TriColorBoardConfig,
     onChange?: (state: boolean) => void
 }
 
 interface BoxProps {
     backgroundColor: string;
 }
-const NewbornConcernBox = styled.div<BoxProps>`
+const TriColorCardBox = styled.div<BoxProps>`
 background-color: ${props => props.backgroundColor || "white"};
 border: 0.5px solid #000;
 border-radius:0;
@@ -151,14 +115,10 @@ justify-content: center;
 user-select: none;
 color: black;`;
 
-const isConcernColor = "#F9928F";
-const notConcernColor = "#C5E0B3";
 
-
-const NewbornConcernCard = (props: NewbornCardProps) => {
+const TriColorCard = (props: TriColorCardProps) => {
 
     const [isConcern, setIsConcern] = useState(props.isConcern);
-
 
     const onClick = () => {
         let newState = false;
@@ -178,15 +138,15 @@ const NewbornConcernCard = (props: NewbornCardProps) => {
         }
     }
 
-    let backgroundColor = "#FFFFFF";
+    let backgroundColor = props.config.cardColorOne!;
     if (isConcern === true) {
-        backgroundColor = isConcernColor;
+        backgroundColor = props.config.cardColorTwo!;
     }
     else if (isConcern === false) {
-        backgroundColor = notConcernColor;
+        backgroundColor = props.config.cardColorThree!;
     }
 
-    return <NewbornConcernBox key={props.text} backgroundColor={backgroundColor} onClick={onClick} >
+    return <TriColorCardBox key={props.text} backgroundColor={backgroundColor} onClick={onClick} >
         <span>{props.text}</span>
-    </NewbornConcernBox>;
+    </TriColorCardBox>;
 }

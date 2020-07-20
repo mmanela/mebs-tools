@@ -1,6 +1,6 @@
 # Mallory Emerson Birth Services Tools
 
-This site provides a set of configurable tools to help run child birth education classes (but can be used for other). Each tool is driven via a configuration file. There are three tools today. If you want to configure your own site with these tools, please fork this repo and configure the files described below.
+This site provides a set of configurable tools to help run [child birth education classes](https://www.malloryemerson.com/) (but can be used for other  things as well). Each tool is driven via a configuration file. There are three tools today. If you want to configure your own site with these tools, please fork this repo and configure the files described below.
 
 
 ## Flip Board

@@ -18,10 +18,12 @@ const StyledMainBox = styled(Box)`
   padding-top: 10px;
 `;
 
+const getBasename = (path: string) => path.substr(0, path.lastIndexOf('/'));
+
 const App = () => {
 
   return (
-    <Router>
+    <Router basename={getBasename(window.location.pathname)}>
       <Grommet theme={GlobalTheme} full>
         <Box fill>
           <StyledMainBox direction='row' flex overflow={{ horizontal: 'hidden' }}>

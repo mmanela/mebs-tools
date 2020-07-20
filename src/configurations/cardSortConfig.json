@@ -49,53 +49,5 @@
                 "text": "Nausea"
             }
         ]
-    },
-    {
-        "name": "sports",
-        "title": "Sports Player Sorter",
-        "categories": [
-            {
-                "title": "Tennis",
-                "description": "Raquet sport"
-            },
-            {
-                "title": "Baseball",
-                "description": "Bat Sport"
-            },
-            {
-                "title": "Football",
-                "description": "Tackling Sport"
-            },
-            {
-                "title": "Basketball",
-                "description": "Hoop Sport"
-            }
-        ],
-        "cards": [
-            {
-                "text": "Michael Jordan"
-            },
-            {
-                "text": "Derek Jeter"
-            },
-            {
-                "text": "Roger Federer"
-            },
-            {
-                "text": "Tom Brady"
-            },
-            {
-                "text": "Aaron Rogers"
-            },
-            {
-                "text": "Lebron James"
-            },
-            {
-                "text": "Raphael Nadal"
-            },
-            {
-                "text": "Babe Ruth"
-            }
-        ]
     }
 ]

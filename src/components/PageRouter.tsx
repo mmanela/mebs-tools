@@ -11,8 +11,11 @@ import { FlipBoard } from "./FlipBoard";
 import cardSortConfig from "../configurations/cardSortConfig.json";
 import flipBoardConfig from "../configurations/flipBoardConfig.json";
 import triColorBoardConfig from "../configurations/triColorBoardConfig.json";
+import wheelBoardConfig from "../configurations/wheelBoardConfig.json";
 import { TriColorBoardStore, TriColorBoardConfig } from "../stores/triColorBoardStore";
 import { TriColorBoard } from "./TriColorBoard";
+import { WheelBoardConfig, WheelBoardStore } from "../stores/wheelStore";
+import { WheelBoard } from "./WheelBoard";
 
 const StyledBox = styled(Box)`
 `;
@@ -41,7 +44,8 @@ export const PageRouter = () => {
 
     const cardSortSection = getCardSorts(path, url);
     const flipBoardSection = getFlipBoards(path, url);
-    const triColorBoardSection = getTriColorBoards(path, url); 
+    const triColorBoardSection = getTriColorBoards(path, url);
+    const wheelBoardSection = getWheelBoardConfig(path, url);
 
     return (
         <StyledBox fill={true} flex align='center'  >
@@ -49,11 +53,13 @@ export const PageRouter = () => {
                 {flipBoardSection.routes}
                 {cardSortSection.routes}
                 {triColorBoardSection.routes}
+                {wheelBoardSection.routes}
                 <Route path="/">
                     <h1>Directory of Tools</h1>
                     {flipBoardSection.section}
                     {cardSortSection.section}
                     {triColorBoardSection.section}
+                    {wheelBoardSection.section}
                 </Route>
             </Switch></StyledBox>);
 }
@@ -124,6 +130,28 @@ const getTriColorBoards = (path: string, url: string) => {
     </StyledLink></li>);
 
     const section = <SectionBox><h2>Color Boards</h2>
+        <ul>
+            {links}
+        </ul>
+    </SectionBox>;
+
+    return { routes, section };
+}
+
+const getWheelBoardConfig = (path: string, url: string) => {
+    const configs: WheelBoardConfig[] = wheelBoardConfig;
+    if (!configs || configs.length <= 0) {
+        return {};
+    }
+    const routes = configs.map(x => <Route key={x.name} path={`${path}${x.name}`}>
+        <WheelBoard configuration={x} store={WheelBoardStore.Instance} />
+    </Route>);
+
+    const links = configs.map(x => <li style={{ marginBottom: '8px' }} key={x.name}><StyledLink key={x.name} to={`${url}${x.name}`}>
+        {x.title}
+    </StyledLink></li>);
+
+    const section = <SectionBox><h2>Wheel Boards</h2>
         <ul>
             {links}
         </ul>

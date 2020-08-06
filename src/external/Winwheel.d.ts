@@ -1,5 +1,5 @@
 
-export declare function createWinWheel(config: WinwheelConfig): Winwheel;
+export declare function createWinWheel(config: WinwheelConfig, drawWheel?: boolean): Winwheel;
 declare class Winwheel {
     constructor(config: WinwheelConfig, drawWheel?: boolean);
     getIndicatedSegmentNumber(): number;

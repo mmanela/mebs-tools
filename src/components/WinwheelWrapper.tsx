@@ -57,13 +57,12 @@ export class WinwheelWrapper extends Component<WinWheelProps> {
                             this.winwheel?.deleteSegment(this.props.options.indexOf(indicatedSegment.text));
                             this.winwheel?.draw();
                         }
-                    }, 500);
+                    }, 1000);
 
                 }
             }
         };
         this.winwheel = createWinWheel(config);
-
     }
 
     componentWillUnmount() {

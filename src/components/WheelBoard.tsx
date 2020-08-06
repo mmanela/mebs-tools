@@ -30,14 +30,13 @@ const StyledChoiceText = styled(Text)`
 `;
 const WheelContainer: React.FC<WheelProps> = (props) => {
 
-    let [options, setOptions] = useState(props.data.options);
     let [lastResult, setLastResult] = useState("");
     const resultCallBack = (result?: string) => {
         setLastResult(result || "");
     };
 
     return <Box
-    ><WinwheelWrapper id={props.id} spinResultCallback={resultCallBack} options={options} spinIteration={props.spinIteration} />
+    ><WinwheelWrapper id={props.id} spinResultCallback={resultCallBack} options={props.data.options} spinIteration={props.spinIteration} />
         <StyledChoiceText alignSelf="center">{lastResult}</StyledChoiceText>
     </Box>;
 }

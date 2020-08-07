@@ -7,6 +7,7 @@ export type WinWheelProps = {
     id: string;
     spinResultCallback?: (result?: string) => void;
     spinIteration: number;
+    widthDivisor?: number;
     options: string[]
 };
 
@@ -22,7 +23,7 @@ margin-top:10px;
 `;
 
 export class WinwheelWrapper extends Component<WinWheelProps> {
-    static defaultProps: WinWheelProps = { id: "", spinIteration: 0, options: [] }
+    static defaultProps: WinWheelProps = { id: "", spinIteration: 0, options: [], widthDivisor: 1 }
     private winwheel?: Winwheel;
     private colors: string[] = ['#eae56f', '#89f26e', '#7de6ef', '#e7706f'];
 
@@ -36,6 +37,8 @@ export class WinwheelWrapper extends Component<WinWheelProps> {
         });
         let config: WinwheelConfig = {
             canvasId: `winwheel - canvas - ${this.props.id} `,
+            innerRadius: 30,
+            widthDivisor: this.props.widthDivisor,
             numSegments: segments.length,         // Number of segments
             textFontSize: 20,        // Font size.
             responsive: true,
@@ -54,7 +57,7 @@ export class WinwheelWrapper extends Component<WinWheelProps> {
                     setTimeout(() => {
 
                         if (indicatedSegment && indicatedSegment.text) {
-                            this.winwheel?.deleteSegment(this.props.options.indexOf(indicatedSegment.text));
+                            this.winwheel?.deleteSegment(this.props.options.indexOf(indicatedSegment.text) + 1);
                             this.winwheel?.draw();
                         }
                     }, 1000);

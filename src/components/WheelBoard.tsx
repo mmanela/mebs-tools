@@ -14,11 +14,14 @@ export type WheelProps = {
     configuration: WheelBoardConfig;
     data: WheelData;
     spinIteration?: number,
+    widthDivisor?: number
     spinFinished?: (val: string) => {};
 }
 
 const StyledButton = styled(Button)`
     width: 30%;
+    font-size: 30px;
+    height: 200px;
 `;
 const StyleBox = styled(Box)`
    min-width: 800px;
@@ -26,7 +29,8 @@ const StyleBox = styled(Box)`
 
 const StyledChoiceText = styled(Text)`
    margin-top: 10px;
-   font-size: 20px;
+   font-size: 30px;
+   font-weight: bold;
 `;
 const WheelContainer: React.FC<WheelProps> = (props) => {
 
@@ -36,7 +40,7 @@ const WheelContainer: React.FC<WheelProps> = (props) => {
     };
 
     return <Box
-    ><WinwheelWrapper id={props.id} spinResultCallback={resultCallBack} options={props.data.options} spinIteration={props.spinIteration} />
+    ><WinwheelWrapper id={props.id} widthDivisor={props.widthDivisor} spinResultCallback={resultCallBack} options={props.data.options} spinIteration={props.spinIteration} />
         <StyledChoiceText alignSelf="center">{lastResult}</StyledChoiceText>
     </Box>;
 }
@@ -49,7 +53,7 @@ export const WheelBoard: React.FC<WheelBoardProps> = (props) => {
     let id = 0;
     const wheels = state.wheels.map(wheel => {
         id = id + 1;
-        return <WheelContainer key={id} id={id.toString()} configuration={props.configuration} data={wheel} spinIteration={spinIteration} />
+        return <WheelContainer key={id} id={id.toString()} widthDivisor={state.wheels.length} configuration={props.configuration} data={wheel} spinIteration={spinIteration} />
     });
 
     return <StyleBox flex fill direction="column">
@@ -57,6 +61,6 @@ export const WheelBoard: React.FC<WheelBoardProps> = (props) => {
             {wheels}
         </Box>
 
-        <StyledButton primary label="Spin!" alignSelf="center" onClick={() => setSpinIteration(++spinIteration)} />
+        <StyledButton primary label="Spin!" alignSelf="center" onClick={() => setSpinIteration(++spinIteration)}  />
     </StyleBox>;
 };

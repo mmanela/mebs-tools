@@ -63,7 +63,9 @@ const createWinWheel = (function (options, drawWheel) {
             'imageDirection': 'N',          // Used when drawMode is segmentImage. Default is north, can also be (E)ast, (S)outh, (W)est.
             'responsive': false,        // If set to true the wheel will resize when the window first loads and also onResize.
             'scaleFactor': 1,            // Set by the responsive function. Used in many calculations to scale the wheel.
+            'widthDivisor': 1,
         };
+
 
         // -----------------------------------------
         // Loop through the default options and create properties of this class set to the value for the option passed in
@@ -85,6 +87,9 @@ const createWinWheel = (function (options, drawWheel) {
             }
         }
 
+        if (options.widthDivisor) {
+            widthDivisor = options.widthDivisor;
+        }
 
         // ------------------------------------------
         // If the id of the canvas is set, try to get the canvas as we need it for drawing.
@@ -2275,6 +2280,7 @@ const createWinWheel = (function (options, drawWheel) {
     // Called when the wheel is to resize. This is normally called from a onresize of the window, also called from onload
     // so the initial size is correct. Here we must re-size the canvas and work out the scaleFactor for the wheel.
     // ====================================================================================================================
+    let widthDivisor = 1;
     function winwheelResize() {
         // By default set the margin to 40px, this can be overridden if needed.
         // This is to stop the canvas going right to the right edge of the screen and being overlayed by a scrollbar though
@@ -2287,9 +2293,8 @@ const createWinWheel = (function (options, drawWheel) {
         }
 
         // Get the current width and also optional min and max width properties.
-        let widthSpinnerFillCount = 3;
         let width = window.innerWidth - margin;
-        width = width / widthSpinnerFillCount;
+        width = width / widthDivisor;
         let minWidth = winwheelToDrawDuringAnimation._responsiveMinWidth;
         let minHeight = winwheelToDrawDuringAnimation._responsiveMinHeight;
 

@@ -101,4 +101,7 @@ export interface WinwheelConfig {
     animation?: WinwheelAnimation;
     pointerGuide?: WinwheelPointerGuide;
     pins?: boolean | WinwheelPin;
+
+    // MManela Additions
+    widthDivisor?: number;
 }

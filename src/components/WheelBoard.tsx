@@ -27,11 +27,20 @@ const StyleBox = styled(Box)`
    min-width: 800px;
 `;
 
-const StyledChoiceText = styled(Text)`
-   margin-top: 10px;
-   font-size: 30px;
-   font-weight: bold;
+const StyledChoiceBox = styled(Box)`
+    margin-top: 10px;
+    font-size: 2vw;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    width: 30vw;
+    height: 100px;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 `;
+
 const WheelContainer: React.FC<WheelProps> = (props) => {
 
     let [lastResult, setLastResult] = useState("");
@@ -41,7 +50,7 @@ const WheelContainer: React.FC<WheelProps> = (props) => {
 
     return <Box
     ><WinwheelWrapper id={props.id} widthDivisor={props.widthDivisor} spinResultCallback={resultCallBack} options={props.data.options} spinIteration={props.spinIteration} />
-        <StyledChoiceText alignSelf="center">{lastResult}</StyledChoiceText>
+        <StyledChoiceBox alignSelf="center">{lastResult}</StyledChoiceBox>
     </Box>;
 }
 
@@ -61,6 +70,6 @@ export const WheelBoard: React.FC<WheelBoardProps> = (props) => {
             {wheels}
         </Box>
 
-        <StyledButton primary label="Spin!" alignSelf="center" onClick={() => setSpinIteration(++spinIteration)}  />
+        <StyledButton primary label="Spin!" alignSelf="center" onClick={() => setSpinIteration(++spinIteration)} />
     </StyleBox>;
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Text, Button } from "grommet";
+import { Box, Button } from "grommet";
 import { WheelBoardStore, WheelBoardConfig, WheelData } from "../stores/wheelStore";
 import { WinwheelWrapper } from "./WinwheelWrapper";
 import styled from "styled-components";

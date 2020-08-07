@@ -29,7 +29,7 @@ const StyleBox = styled(Box)`
 
 const StyledChoiceBox = styled(Box)`
     margin-top: 10px;
-    font-size: 2vw;
+    font-size: 1.5vw;
     font-weight: bold;
     background-color: black;
     color: white;

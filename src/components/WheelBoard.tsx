@@ -21,7 +21,7 @@ export type WheelProps = {
 const StyledButton = styled(Button)`
     width: 30%;
     font-size: 30px;
-    height: 200px;
+    height: 100px;
 `;
 const StyleBox = styled(Box)`
    min-width: 800px;

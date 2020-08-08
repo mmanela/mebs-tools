@@ -3,10 +3,11 @@
         "name": "birthwheel",
         "title": "Labor Practice Spinners",
         "backgroundColors": [
-            "#eae56f",
-            "#89f26e",
-            "#7de6ef",
-            "#e7706f"
+            "#78d0bb",
+            "#cbcdca",
+            "#f6e6ab",
+            "#9befdb",
+            "#f2dd8c"
         ],
         "wheels": [
             {

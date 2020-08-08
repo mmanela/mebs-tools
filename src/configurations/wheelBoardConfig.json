@@ -1,29 +1,33 @@
 [
     {
         "name": "birthwheel",
-        "title": "Birth Wheel",
+        "title": "Labor Practice Spinners",
         "wheels": [
             {
-                "title": "Wheel One",
+                "title": "Position",
                 "options": [
-                    "A",
-                    "B",
-                    "C",
-                    "D",
-                    "E",
-                    "F"
+                    "Sit on birth ball",
+                    "Lay on side",
+                    "Slow dancing",
+                    "Walk/stand/lean",
+                    "Backwards on chair",
+                    "Hands & Knees"
+                    "Rocking in a chair"
+                    "Lunge"
+                 
                 ]
             },
             {
-                "title": "Wheel Two",
+                "title": "Breath",
                 "options": [
-                    "T",
-                    "U",
-                    "V",
-                    "W",
-                    "X",
-                    "Y",
-                    "Z"
+                    "Breathe normally",
+                    "Horse-lips",
+                    "Cool off hot soup",
+                    "Mantra",
+                    "Blow out candles",
+                    "Full belly breath",
+                    "Chant vowels"
+                    "Breathe & hold"
                 ]
             },
             {

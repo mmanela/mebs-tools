@@ -2,7 +2,7 @@
     {
         "name": "birthwheel",
         "title": "Labor Practice Spinners",
-        "colors": [
+        "backgroundColors": [
             "#eae56f",
             "#89f26e",
             "#7de6ef",
@@ -40,7 +40,11 @@
                 "options": [
                     "1",
                     "2",
-                    "3",
+                    {
+                        "text": "3",
+                        "fontSize": 100,
+                        "backgroundColor": "yellow"
+                    },
                     "4",
                     "5",
                     "6",

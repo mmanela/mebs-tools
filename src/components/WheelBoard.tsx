@@ -55,7 +55,7 @@ const WheelContainer: React.FC<WheelProps> = (props) => {
             spinResultCallback={resultCallBack}
             options={props.data.options}
             spinIteration={props.spinIteration}
-            colors={props.configuration.colors}
+            colors={props.configuration.backgroundColors}
         />
         <StyledChoiceBox alignSelf="center">{lastResult}</StyledChoiceBox>
     </Box>;

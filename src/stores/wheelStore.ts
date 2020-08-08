@@ -4,19 +4,38 @@ export interface WheelBoardConfig extends BaseConfig {
     cardBackgroundColorFront?: string;
     cardBackgroundColorBack?: string;
     wheels: WheelConfig[];
-    colors?: string[]
+    backgroundColors?: string[]
 }
 
 export interface WheelConfig {
     title: string;
-    options: string[];
+    options: (string | WheelSegmentConfig)[];
+}
+
+export interface WheelSegmentConfig {
+    text: string,
+    fontSize?: number,
+    backgroundColor?: string
 }
 
 export interface WheelData extends WheelConfig {
+    options: WheelSegmentConfig[];
 };
 
 export interface WheelBoardState {
     wheels: WheelData[];
+}
+
+
+function mapOptions(options: (string | WheelSegmentConfig)[]): WheelSegmentConfig[] {
+    return options.map<WheelSegmentConfig>(x => {
+        if (typeof x === 'string') {
+            return { text: x };
+        }
+        else {
+            return { ...x }
+        }
+    });
 }
 
 export class WheelBoardStore implements BaseStore<WheelBoardConfig, WheelBoardState> {
@@ -34,7 +53,7 @@ export class WheelBoardStore implements BaseStore<WheelBoardConfig, WheelBoardSt
         }
         else {
 
-            const wheels: WheelData[] = config.wheels.map((s) => { return { ...s } });
+            const wheels: WheelData[] = config.wheels.map((s) => { return { ...s, options: mapOptions(s.options) } });
             const state: WheelBoardState = { wheels };
             this.stateMap.set(config.name, state);
             return state;

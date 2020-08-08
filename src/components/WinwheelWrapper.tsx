@@ -2,13 +2,14 @@ import React, { Component } from "react";
 
 import { createWinWheel, WinwheelConfig, Winwheel, WinwheelSegment } from '../external/Winwheel'
 import styled from "styled-components";
+import { WheelSegmentConfig } from "../stores/wheelStore";
 
 export type WinWheelProps = {
     id: string;
     spinResultCallback?: (result?: string) => void;
     spinIteration: number;
     widthDivisor?: number;
-    options: string[];
+    options: WheelSegmentConfig[];
     colors?: string[];
 };
 
@@ -28,13 +29,23 @@ export class WinwheelWrapper extends Component<WinWheelProps> {
     private winwheel?: Winwheel;
     private defaultColors: string[] = ['#eae56f', '#89f26e', '#7de6ef', '#e7706f'];
 
+    findOptionIndex(text: string) {
+        for (let i = 0; i < this.props.options.length; i++) {
+            if (this.props.options[i].text === text) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     componentDidMount() {
 
         const colors = this.props.colors || this.defaultColors;
         const segments: WinwheelSegment[] = this.props.options.map<WinwheelSegment>((value, index) => {
             return {
-                text: value,
-                fillStyle: colors[index % colors.length]
+                text: value.text,
+                textFontSize: value.fontSize,
+                fillStyle: value.backgroundColor || colors[index % colors.length]
             }
         });
         let config: WinwheelConfig = {
@@ -59,7 +70,7 @@ export class WinwheelWrapper extends Component<WinWheelProps> {
                     setTimeout(() => {
 
                         if (indicatedSegment && indicatedSegment.text) {
-                            this.winwheel?.deleteSegment(this.props.options.indexOf(indicatedSegment.text) + 1);
+                            this.winwheel?.deleteSegment(this.findOptionIndex(indicatedSegment.text) + 1);
                             this.winwheel?.draw();
                         }
                     }, 1000);

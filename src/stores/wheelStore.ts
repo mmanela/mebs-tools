@@ -4,6 +4,7 @@ export interface WheelBoardConfig extends BaseConfig {
     cardBackgroundColorFront?: string;
     cardBackgroundColorBack?: string;
     wheels: WheelConfig[];
+    colors?: string[]
 }
 
 export interface WheelConfig {

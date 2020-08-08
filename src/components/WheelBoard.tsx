@@ -29,7 +29,7 @@ const StyleBox = styled(Box)`
 
 const StyledChoiceBox = styled(Box)`
     margin-top: 10px;
-    font-size: 1.5vw;
+    font-size: 1.8vw;
     font-weight: bold;
     background-color: black;
     color: white;
@@ -49,7 +49,14 @@ const WheelContainer: React.FC<WheelProps> = (props) => {
     };
 
     return <Box
-    ><WinwheelWrapper id={props.id} widthDivisor={props.widthDivisor} spinResultCallback={resultCallBack} options={props.data.options} spinIteration={props.spinIteration} />
+    ><WinwheelWrapper
+            id={props.id}
+            widthDivisor={props.widthDivisor}
+            spinResultCallback={resultCallBack}
+            options={props.data.options}
+            spinIteration={props.spinIteration}
+            colors={props.configuration.colors}
+        />
         <StyledChoiceBox alignSelf="center">{lastResult}</StyledChoiceBox>
     </Box>;
 }
@@ -62,7 +69,12 @@ export const WheelBoard: React.FC<WheelBoardProps> = (props) => {
     let id = 0;
     const wheels = state.wheels.map(wheel => {
         id = id + 1;
-        return <WheelContainer key={id} id={id.toString()} widthDivisor={state.wheels.length} configuration={props.configuration} data={wheel} spinIteration={spinIteration} />
+        return <WheelContainer key={id}
+            id={id.toString()}
+            widthDivisor={state.wheels.length}
+            configuration={props.configuration}
+            data={wheel}
+            spinIteration={spinIteration} />
     });
 
     return <StyleBox flex fill direction="column">

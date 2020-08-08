@@ -2,6 +2,12 @@
     {
         "name": "birthwheel",
         "title": "Labor Practice Spinners",
+        "colors": [
+            "#eae56f",
+            "#89f26e",
+            "#7de6ef",
+            "#e7706f"
+        ],
         "wheels": [
             {
                 "title": "Position",
@@ -14,7 +20,6 @@
                     "Hands & Knees",
                     "Rocking in a chair",
                     "Lunge"
-                 
                 ]
             },
             {

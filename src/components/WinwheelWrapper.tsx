@@ -8,7 +8,8 @@ export type WinWheelProps = {
     spinResultCallback?: (result?: string) => void;
     spinIteration: number;
     widthDivisor?: number;
-    options: string[]
+    options: string[];
+    colors?: string[];
 };
 
 
@@ -25,14 +26,15 @@ margin-top:10px;
 export class WinwheelWrapper extends Component<WinWheelProps> {
     static defaultProps: WinWheelProps = { id: "", spinIteration: 0, options: [], widthDivisor: 1 }
     private winwheel?: Winwheel;
-    private colors: string[] = ['#eae56f', '#89f26e', '#7de6ef', '#e7706f'];
+    private defaultColors: string[] = ['#eae56f', '#89f26e', '#7de6ef', '#e7706f'];
 
     componentDidMount() {
 
+        const colors = this.props.colors || this.defaultColors;
         const segments: WinwheelSegment[] = this.props.options.map<WinwheelSegment>((value, index) => {
             return {
                 text: value,
-                fillStyle: this.colors[index % this.colors.length]
+                fillStyle: colors[index % colors.length]
             }
         });
         let config: WinwheelConfig = {
@@ -40,7 +42,7 @@ export class WinwheelWrapper extends Component<WinWheelProps> {
             innerRadius: 30,
             widthDivisor: this.props.widthDivisor,
             numSegments: segments.length,         // Number of segments
-            textFontSize: 20,        // Font size.
+            textFontSize: 28,        // Font size.
             responsive: true,
             segments: segments,            // Definition of all the segments.,
             animation:               // Definition of the animation

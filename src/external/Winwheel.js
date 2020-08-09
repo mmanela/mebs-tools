@@ -219,6 +219,8 @@ const createWinWheel = (function (options, drawWheel) {
 
             // Get data-attributes on the canvas.
             this._responsiveScaleHeight = this.canvas.dataset.responsivescaleheight;
+            this._responsiveMaxWidth = this.canvas.dataset.responsivemaxwidth;
+            this._responsiveMaxHeight = this.canvas.dataset.responsivemaxheight;
             this._responsiveMinWidth = this.canvas.dataset.responsiveminwidth;
             this._responsiveMinHeight = this.canvas.dataset.responsiveminheight;
             this._responsiveMargin = this.canvas.dataset.responsivemargin;
@@ -2303,11 +2305,9 @@ const createWinWheel = (function (options, drawWheel) {
         if (width < minWidth) {
             width = minWidth;
         }
-        /*
-       // Remove to allow resizing width larger than initial height
-        else if (width > winwheelToDrawDuringAnimation._originalCanvasWidth) {
-            width = winwheelToDrawDuringAnimation._originalCanvasWidth;
-        }*/
+        else if (width > winwheelToDrawDuringAnimation._responsiveMaxWidth) {
+            width = winwheelToDrawDuringAnimation._responsiveMaxWidth;
+        }
 
         // Work out the percent the new width is smaller than the original width.
         let percent = (width / winwheelToDrawDuringAnimation._originalCanvasWidth);
@@ -2322,13 +2322,10 @@ const createWinWheel = (function (options, drawWheel) {
             if (height < minHeight) {
                 height = minHeight;
             }
-
-            /*
-            // Remove to allow resizing higher larger than initial height
-            else if (height > winwheelToDrawDuringAnimation._originalCanvasHeight) {
-                height = winwheelToDrawDuringAnimation._originalCanvasHeight;
+            else if (height > winwheelToDrawDuringAnimation._responsiveMaxHeight) {
+                height = winwheelToDrawDuringAnimation._responsiveMaxHeight;
             }
-            */
+
             winwheelToDrawDuringAnimation.canvas.height = height;
         }
 

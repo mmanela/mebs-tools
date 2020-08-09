@@ -13,6 +13,11 @@ export type WinWheelProps = {
     colors?: string[];
 };
 
+export type WinWheelState = {
+    options: string[]
+}
+
+
 
 const CanvasContainer = styled.div`
     position: relative;
@@ -24,14 +29,19 @@ margin-right: 10px;
 margin-top:10px;
 `;
 
-export class WinwheelWrapper extends Component<WinWheelProps> {
+export class WinwheelWrapper extends Component<WinWheelProps, WinWheelState> {
     static defaultProps: WinWheelProps = { id: "", spinIteration: 0, options: [], widthDivisor: 1 }
     private winwheel?: Winwheel;
     private defaultColors: string[] = ['#eae56f', '#89f26e', '#7de6ef', '#e7706f'];
 
+    constructor(props: WinWheelProps) {
+        super(props);
+        this.state = { options: props.options.map(x => x.text) };
+    }
+
     findOptionIndex(text: string) {
-        for (let i = 0; i < this.props.options.length; i++) {
-            if (this.props.options[i].text === text) {
+        for (let i = 0; i < this.state.options.length; i++) {
+            if (this.state.options[i] === text) {
                 return i;
             }
         }
@@ -70,7 +80,11 @@ export class WinwheelWrapper extends Component<WinWheelProps> {
                     setTimeout(() => {
 
                         if (indicatedSegment && indicatedSegment.text) {
-                            this.winwheel?.deleteSegment(this.findOptionIndex(indicatedSegment.text) + 1);
+                            const indexToRemove = this.findOptionIndex(indicatedSegment.text);
+                            let newOptions = [...this.state.options];
+                            newOptions.splice(indexToRemove, 1);
+                            this.winwheel?.deleteSegment(indexToRemove + 1);
+                            this.setState({ options: newOptions });
                             this.winwheel?.draw();
                         }
                     }, 1000);
@@ -108,6 +122,8 @@ export class WinwheelWrapper extends Component<WinWheelProps> {
         return <CanvasContainer>
             <StyledCanvas className="winwheel-canvas" id={`winwheel - canvas - ${this.props.id} `}
                 data-responsiveminwidth="200"
+                data-responsivemaxwidth="800"
+                data-responsivemaxheight="800"
                 data-responsivescaleheight="true"   /* Optional Parameters */
                 data-responsivemargin="80"
                 width="800"

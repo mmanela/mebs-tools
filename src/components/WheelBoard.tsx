@@ -19,9 +19,13 @@ export type WheelProps = {
 }
 
 const StyledButton = styled(Button)`
-    width: 30%;
-    font-size: 30px;
+    width: 25%;
+    font-size: 4vw;
     height: 100px;
+    letter-spacing: 20px;
+    font-weight: bold;
+    background-color: black;
+    color: white;
 `;
 const StyleBox = styled(Box)`
    min-width: 800px;
@@ -29,10 +33,10 @@ const StyleBox = styled(Box)`
 
 const StyledChoiceBox = styled(Box)`
     margin-top: 10px;
-    font-size: 1.8vw;
+    font-size: 2vw;
     font-weight: bold;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     width: 30vw;
     height: 100px;
     padding: 10px;
@@ -82,6 +86,6 @@ export const WheelBoard: React.FC<WheelBoardProps> = (props) => {
             {wheels}
         </Box>
 
-        <StyledButton primary label="Spin!" alignSelf="center" onClick={() => setSpinIteration(++spinIteration)} />
-    </StyleBox>;
+        <StyledButton color="#f6e6ab" label="SPIN" alignSelf="center" onClick={() => setSpinIteration(++spinIteration)} />
+    </StyleBox >;
 };

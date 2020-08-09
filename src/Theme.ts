@@ -1,5 +1,6 @@
+import { ThemeType } from "grommet";
 
-export const GlobalTheme = {
+export const GlobalTheme: ThemeType = {
     global: {
         colors: {
             MebsDarkBlue: '#78d0bb',
@@ -30,13 +31,38 @@ export const GlobalTheme = {
             xlarge: {
                 value: 3000
             }
+        },
+        focus: {
+            border: {
+                color: '#f2dd8c'
+            },
+
         }
     },
+    button: {
+        active: {
+            default: {
+                border: {
+                    color: 'red'
+                }
+            },
+            primary: {
+                border: {
+                    color: 'red'
+                }
+            },
+            secondary: {
+                border: {
+                    color: 'red'
+                }
+            }
+        }
+    }
 };
 
 type Sizes = ('xsmall' | 'small' | 'medium' | 'large' | 'xlarge');
 export function getGridBoxWidth(size: Sizes) {
 
-    var x = GlobalTheme.global.breakpoints[size];
+    var x = GlobalTheme!.global!.breakpoints![size];
     return x;
 }

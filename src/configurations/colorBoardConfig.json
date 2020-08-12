@@ -2,9 +2,12 @@
     {
         "name": "newbornconcerns",
         "title": "Newborn Concerns",
-        "cardColorOne": "#ffffff",
-        "cardColorTwo": "#F9928F",
-        "cardColorThree": "#C5E0B3",
+        "skipFirstColorOnCycle": true,
+        "colors": [
+            "#ffffff",
+            "#C5E0B3",
+            "#F9928F"
+        ],
         "cards": [
             {
                 "text": "Cone-Shaped Head"

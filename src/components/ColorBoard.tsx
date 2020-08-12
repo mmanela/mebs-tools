@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Grid, ResponsiveContext, GridProps } from "grommet";
 import styled from "styled-components";
-import { TriColorBoardConfig, TriColorBoardStore } from "../stores/triColorBoardStore";
+import { ColorBoardConfig, ColorBoardStore } from "../stores/colorBoardStore";
 
 interface IDictionary<TValue> {
     [id: string]: TValue;
@@ -60,21 +60,21 @@ const Responsive = (props: ResponsiveGridProps) => {
     );
 }
 
-export type TriColorBoardProps = {
-    configuration: TriColorBoardConfig
-    store: TriColorBoardStore
+export type ColorBoardProps = {
+    configuration: ColorBoardConfig
+    store: ColorBoardStore
 }
 
-export const TriColorBoard: React.FC<TriColorBoardProps> = (props: TriColorBoardProps) => {
+export const ColorBoard: React.FC<ColorBoardProps> = (props: ColorBoardProps) => {
 
     const state = props.store.getState(props.configuration);
     const size = React.useContext(ResponsiveContext);
     // Create box for each  choice
     const listPlanOptionBoxes = state.cards.map(card => {
-        const onChange = (isConcern: boolean) => {
-            card.state = isConcern;
+        const onChange = (index: number) => {
+            card.colorIndex = index;
         }
-        return <TriColorCard key={card.text} text={card.text} isConcern={card.state} config={props.configuration} onChange={onChange} />
+        return <TriColorCard key={card.text} text={card.text} colorIndex={card.colorIndex} config={props.configuration} onChange={onChange} />
     });
 
     return <Box>
@@ -84,11 +84,11 @@ export const TriColorBoard: React.FC<TriColorBoardProps> = (props: TriColorBoard
     </Box>
 };
 
-export type TriColorCardProps = {
+export type ColorCardProps = {
     text: string,
-    isConcern?: boolean,
-    config: TriColorBoardConfig,
-    onChange?: (state: boolean) => void
+    colorIndex: number,
+    config: ColorBoardConfig,
+    onChange?: (index: number) => void
 }
 
 interface BoxProps {
@@ -116,35 +116,25 @@ user-select: none;
 color: black;`;
 
 
-const TriColorCard = (props: TriColorCardProps) => {
+const TriColorCard = (props: ColorCardProps) => {
 
-    const [isConcern, setIsConcern] = useState(props.isConcern);
+    const [colorIndex, setColorIndex] = useState(props.colorIndex);
 
     const onClick = () => {
-        let newState = false;
-        if (isConcern === null || isConcern === undefined) {
-            newState = false;
-        }
-        else if (isConcern === false) {
-            newState = true;
-        }
-        else {
-            newState = false;
+        let newIndex = (colorIndex + 1) % props.config.colors.length;
+
+        if (props.config.skipFirstColorOnCycle && newIndex === 0) {
+            newIndex++;
         }
 
-        setIsConcern(newState);
+        setColorIndex(newIndex);
+
         if (props.onChange) {
-            props.onChange(newState);
+            props.onChange(newIndex);
         }
     }
 
-    let backgroundColor = props.config.cardColorOne!;
-    if (isConcern === true) {
-        backgroundColor = props.config.cardColorTwo!;
-    }
-    else if (isConcern === false) {
-        backgroundColor = props.config.cardColorThree!;
-    }
+    let backgroundColor = props.config.colors[colorIndex];
 
     return <TriColorCardBox key={props.text} backgroundColor={backgroundColor} onClick={onClick} >
         <span>{props.text}</span>

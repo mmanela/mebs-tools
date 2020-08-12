@@ -10,10 +10,10 @@ import { FlipBoard } from "./FlipBoard";
 // Config files
 import cardSortConfig from "../configurations/cardSortConfig.json";
 import flipBoardConfig from "../configurations/flipBoardConfig.json";
-import triColorBoardConfig from "../configurations/triColorBoardConfig.json";
+import colorBoardConfig from "../configurations/colorBoardConfig.json";
 import wheelBoardConfig from "../configurations/wheelBoardConfig.json";
-import { TriColorBoardStore, TriColorBoardConfig } from "../stores/triColorBoardStore";
-import { TriColorBoard } from "./TriColorBoard";
+import { ColorBoardStore, ColorBoardConfig } from "../stores/colorBoardStore";
+import { ColorBoard } from "./ColorBoard";
 import { WheelBoardConfig, WheelBoardStore } from "../stores/wheelStore";
 import { WheelBoard } from "./WheelBoard";
 
@@ -44,7 +44,7 @@ export const PageRouter = () => {
 
     const cardSortSection = getCardSorts(path, url);
     const flipBoardSection = getFlipBoards(path, url);
-    const triColorBoardSection = getTriColorBoards(path, url);
+    const triColorBoardSection = getColorBoards(path, url);
     const wheelBoardSection = getWheelBoardConfig(path, url);
 
     return (
@@ -116,13 +116,13 @@ const getFlipBoards = (path: string, url: string) => {
 }
 
 
-const getTriColorBoards = (path: string, url: string) => {
-    const configs: TriColorBoardConfig[] = triColorBoardConfig;
+const getColorBoards = (path: string, url: string) => {
+    const configs: ColorBoardConfig[] = colorBoardConfig;
     if (!configs || configs.length <= 0) {
         return {};
     }
     const routes = configs.map(x => <Route key={x.name} path={`${path}${x.name}`}>
-        <TriColorBoard configuration={x} store={TriColorBoardStore.Instance} />
+        <ColorBoard configuration={x} store={ColorBoardStore.Instance} />
     </Route>);
 
     const links = configs.map(x => <li style={{ marginBottom: '8px' }} key={x.name}><StyledLink key={x.name} to={`${url}${x.name}`}>

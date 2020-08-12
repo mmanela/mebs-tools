@@ -125,8 +125,10 @@
         "skipFirstColorOnCycle": true,
         "colors": [
             "#ffffff",
-            "#C5E0B3",
-            "#F9928F"
+            "#00ff03",
+            "#fff72d",
+            "##ff9628",
+            "#ef0f0f"
         ],
         "cards": [
             {

@@ -11,6 +11,7 @@ background-color: lightblue;
 border: 1px solid #000;
 padding:5px;
 cursor: move;
+width: 150px;
 display: inline-block;
 border-radius:10px;`;
 

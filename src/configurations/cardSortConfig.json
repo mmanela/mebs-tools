@@ -56,19 +56,23 @@
         "cardBackgroundColor": "#03989e",
         "categories": [
             {
-                "title": "Not at all"
+                "title": "Not at all",
+                "description": ""
               
             },
             {
-                "title": "Very little"
+                "title": "Very little",
+                "description": ""
                 
             },
             {
-                "title": "Some of the time"
+                "title": "Some of the time",
+                "description": ""
                 
             },
             {
-                "title": "Most of the time"
+                "title": "Most of the time",
+                "description": ""
                 
             }
         ],

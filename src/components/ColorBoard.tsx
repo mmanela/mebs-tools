@@ -51,7 +51,7 @@ const Responsive = (props: ResponsiveGridProps) => {
             alignContent="stretch"
             align="center"
             justify="center"
-            style={{ backgroundColor: '#000', padding: '1px' }}
+            style={{ backgroundColor: '#fff', padding: '1px' }}
             rows={!rowsVal ? size : rowsVal}
             columns={!columnsVal ? size : columnsVal}
             {...props}>
@@ -74,7 +74,7 @@ export const ColorBoard: React.FC<ColorBoardProps> = (props: ColorBoardProps) =>
         const onChange = (index: number) => {
             card.colorIndex = index;
         }
-        return <TriColorCard key={card.text} text={card.text} colorIndex={card.colorIndex} config={props.configuration} onChange={onChange} />
+        return <ColorCard key={card.text} text={card.text} colorIndex={card.colorIndex} config={props.configuration} onChange={onChange} />
     });
 
     return <Box>
@@ -94,7 +94,7 @@ export type ColorCardProps = {
 interface BoxProps {
     backgroundColor: string;
 }
-const TriColorCardBox = styled.div<BoxProps>`
+const ColorCardBox = styled.div<BoxProps>`
 background-color: ${props => props.backgroundColor || "white"};
 border: 0.5px solid #000;
 border-radius:0;
@@ -116,7 +116,7 @@ user-select: none;
 color: black;`;
 
 
-const TriColorCard = (props: ColorCardProps) => {
+const ColorCard = (props: ColorCardProps) => {
 
     const [colorIndex, setColorIndex] = useState(props.colorIndex);
 
@@ -136,7 +136,7 @@ const TriColorCard = (props: ColorCardProps) => {
 
     let backgroundColor = props.config.colors[colorIndex];
 
-    return <TriColorCardBox key={props.text} backgroundColor={backgroundColor} onClick={onClick} >
+    return <ColorCardBox key={props.text} backgroundColor={backgroundColor} onClick={onClick} >
         <span>{props.text}</span>
-    </TriColorCardBox>;
+    </ColorCardBox>;
 }

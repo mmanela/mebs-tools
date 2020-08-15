@@ -114,9 +114,9 @@ const CategoriesDropTarget: React.FC<CardSortInternalProps> = (props): JSX.Eleme
     const isActive = canDrop && isOver
     let backgroundColor = 'transparent';
     if (isActive) {
-        backgroundColor = '#ccc';
+        backgroundColor = 'transparent';
     } else if (canDrop) {
-        backgroundColor = '#ddd';
+        backgroundColor = 'transparent';
     }
 
     var cardBoxes = boxes.map(x => {

@@ -118,49 +118,5 @@
                 "text": "Some periods of irregular breathing"
             }
         ]
-    },
-     {
-        "name": "postpartumscreen",
-        "title": "EPDS",
-        "skipFirstColorOnCycle": true,
-        "colors": [
-            "#ffffff",
-            "#00ff03",
-            "#fff72d",
-            "#ff9628",
-            "#ef0f0f"
-        ],
-        "cards": [
-            {
-                "text": "I have been able to laugh & see the funny side of things"
-            },
-            {
-                "text": "I have looked forward with enjoyment to things"
-            },
-            {
-                "text": "I have blamed myself unnecessarily when things went wrong"
-            },
-            {
-                "text": "I have been anxious or worried for no good reason"
-            },
-            {
-                "text": "I have felt scared or panicky for no very good reason"
-            },
-            {
-                "text": "Things have been getting on top of me"
-            },
-            {
-                "text": "I have been so unhappy that I have had difficulty sleeping"
-            },
-            {
-                "text": "I have felt sad or miserable"
-            },
-            {
-                "text": "I have been so unhappy that I have been crying"
-            },
-            {
-                "text": "The thought of harming myself has occured to me"
-            }
-        ]
     }
 ]

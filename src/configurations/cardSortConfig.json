@@ -108,5 +108,74 @@
                 "text": "I have felt scared or panicked for no good reason"
             }
             ]
+     }, 
+     {
+        "name": "postbirth",
+        "title": "Warning Signs After Birth",
+        "cardBackgroundColor": "#faa732",
+        "categories": [
+            {
+                "title": "Call 911",
+                "description": "Get help now"
+              
+            },
+            {
+                "title": "Call Your Provider",
+                "description": "Not as urgent, but you should check with your provider"
+                
+            },
+            {
+                "title": "No Worries",
+                "description": "Normal postpartum experience"
+                
+            }
+        ],
+        "cards": [
+            {
+                "text": "Pain in chest"
+            },
+            {
+                "text": "Sweating and peeing a lot"
+            },
+            {
+                "text": "Red or swollen leg, painful or warm to the touch"
+            },
+            {
+                "text": "Up and down emotionally"
+            },
+            {
+                "text": "Breast engorgement and leaking fluid"
+            },
+            {
+                "text": "Bleeding - soaking through one pad/hour or clots the size of an egg or larger"
+            },
+            {
+                "text": "Bleeding that is like a heavy period and begins to decrease. May increase with activity."
+            },
+            {
+                "text": "Obstructed breathing or shortness of breath"
+            },
+            {
+                "text": "Seizures"
+            },
+            {
+                "text": "Temperature of 100.4* or higher"
+            },
+	    {
+"text": "Incision that is not healing"
+},
+{
+"text": "Thoughts of hurting yourself or someone else"
+},
+{
+"text": "Headache that does not get better, even with medication - or bad headache with vision changes"
+},
+{
+"text": "Uterine cramping, especially when nursing"
+},
+{
+"text": "Perineal discomfort"
+}
+            ]
      }
 ]

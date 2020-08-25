@@ -4,12 +4,11 @@ import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import { Box } from "grommet";
 import styled from "styled-components";
 import { CardSortStore, CardSortConfig } from "../stores/cardSortStore";
-import { FlipBoardStore, FlipBoardConfig } from "../stores/flipBoardStore";
-import { FlipBoard } from "./FlipBoard";
+
 
 // Config files
 import cardSortConfig from "../configurations/cardSortConfig.json";
-import flipBoardConfig from "../configurations/flipBoardConfig.json";
+
 import colorBoardConfig from "../configurations/colorBoardConfig.json";
 import wheelBoardConfig from "../configurations/wheelBoardConfig.json";
 import { ColorBoardStore, ColorBoardConfig } from "../stores/colorBoardStore";
@@ -43,20 +42,20 @@ export const PageRouter = () => {
     let { path, url } = useRouteMatch();
 
     const cardSortSection = getCardSorts(path, url);
-    const flipBoardSection = getFlipBoards(path, url);
+    
     const triColorBoardSection = getColorBoards(path, url);
     const wheelBoardSection = getWheelBoardConfig(path, url);
 
     return (
         <StyledBox fill={true} flex align='center'  >
             <Switch>
-                {flipBoardSection.routes}
+                
                 {cardSortSection.routes}
                 {triColorBoardSection.routes}
                 {wheelBoardSection.routes}
                 <Route path="/">
                     <h1>Directory of Tools</h1>
-                    {flipBoardSection.section}
+                    
                     {cardSortSection.section}
                     {triColorBoardSection.section}
                     {wheelBoardSection.section}
@@ -92,28 +91,6 @@ const getCardSorts = (path: string, url: string) => {
     return { routes, section };
 }
 
-
-const getFlipBoards = (path: string, url: string) => {
-    const configs: FlipBoardConfig[] = flipBoardConfig;
-    if (!configs || configs.length <= 0) {
-        return {};
-    }
-    const routes = configs.map(x => <Route key={x.name} path={`${path}${x.name}`}>
-        <FlipBoard configuration={x} store={FlipBoardStore.Instance} />
-    </Route>);
-
-    const links = configs.map(x => <li style={{ marginBottom: '8px' }} key={x.name}><StyledLink key={x.name} to={`${url}${x.name}`}>
-        {x.title}
-    </StyledLink></li>);
-
-    const section = <SectionBox><h2>Flip Boards</h2>
-        <ul>
-            {links}
-        </ul>
-    </SectionBox>;
-
-    return { routes, section };
-}
 
 
 const getColorBoards = (path: string, url: string) => {

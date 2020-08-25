@@ -1,59 +1,6 @@
 [
-    {
-        "name": "laborsigns",
-        "title": "Signs of Labor",
-        "cardBackgroundColor": "#78d0bb",
-        "categories": [
-            {
-                "title": "Possible",
-                "description": "Could be related to labor starting, but could also just be discomfort in late pregnancy - it could still be several weeks before baby is here"
-            },
-            {
-                "title": "Probable",
-                "description": "Your body is definitely making changes towards labor"
-            },
-            {
-                "title": "Positive",
-                "description": "Surefire signs! Get ready to welcome your baby in the next day or two"
-            }
-        ],
-        "cards": [
-            {
-                "text": "Bloody Show"
-            },
-            {
-                "text": "Non-progressing Contractions"
-            },
-            {
-                "text": "Restless Backache"
-            },
-            {
-                "text": "Nesting Urge"
-            },
-            {
-                "text": "Soft Bowel Movements"
-            },
-            {
-                "text": "Progressing Contractions (Longer, Stronger, Closer Together)"
-            },
-            {
-                "text": "Rupture of Membranes (Gush of Fluid)"
-            },
-            {
-                "text": "Leaking Fluid"
-            },
-            {
-                "text": "Cramping"
-            },
-            {
-                "text": "Nausea"
-            }
-        ]
-    }, 
-    
-
-     {
-        "name": "postbirth",
+	{
+		"name": "postbirth",
         "title": "Warning Signs After Birth",
         "cardBackgroundColor": "#faa732",
         "categories": [
